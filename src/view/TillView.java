@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.Map;
 
 public class TillView {
-    private StringBuilder output;
+    private final StringBuilder output;
 
     public TillView() {
         output = new StringBuilder();
@@ -44,7 +44,7 @@ public class TillView {
                 "\t\t**Thank you for your purchase!** \n";
 
         System.out.println(transactionResult);
-        appendToOutput(transactionResult + "\n"); // Append to optional output file (if implemented)
+        appendToOutput(transactionResult + "\n");
     }
 
     private String formatChangeBreakdown(Map<Integer, Integer> changeBreakdown) {

@@ -3,9 +3,9 @@ package model;
 import java.util.Map;
 
 public class Change {
-    private int totalChange;
-    private Map<Integer, Integer> changeBreakdown;
-    private Transaction transaction; // Added field
+    private final int totalChange;
+    private final Map<Integer, Integer> changeBreakdown;
+    private final Transaction transaction; // Added field
 
     public Change(int totalChange, Map<Integer, Integer> changeBreakdown, Transaction transaction) {
         this.totalChange = totalChange;

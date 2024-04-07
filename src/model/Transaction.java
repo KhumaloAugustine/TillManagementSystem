@@ -11,7 +11,6 @@ public class Transaction {
         this.amountPaid = amountPaid;
     }
 
-    // Getters and setters
     public List<Item> getItems() {
         return items;
     }
