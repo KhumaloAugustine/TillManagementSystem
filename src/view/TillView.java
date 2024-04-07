@@ -26,22 +26,22 @@ public class TillView {
         Date date = new Date();
         String formattedDate = formatter.format(date);
 
-        String transactionResult = "**Receipt**\n" +
+        String transactionResult = "\t\t**Receipt**\n" +
                 "Date: " + formattedDate + "\n" +
-                "Till Start: " + tillStart + "\n" +
-                "Transaction Total: " + transactionTotal + "\n" +
-                "Amount Paid: " + amountPaid + "\n" +
-                "Change Total: " + changeTotal + "\n" +
+                "Till Start: R" + (tillStart - transactionTotal) + "\n" +
+                "Transaction Total: R" + transactionTotal + "\n" +
+                "Amount Paid: R" + amountPaid + "\n" +
+                "Change Total: R" + changeTotal + "\n" +
                 "Change Breakdown:\n" +
                 formatChangeBreakdown(changeGiven.getChangeBreakdown()) + "\n" +
                 "**Items Bought:**\n";
 
         for (Item item : changeGiven.getTransaction().getItems()) {
-            transactionResult += item.getDescription() + " - " + item.getAmount() + "\n";
+            transactionResult += item.getDescription() + " - " + "R" + item.getAmount() + "\n";
         }
 
-        transactionResult += "\n**Remaining Till Amount:** " + remainingAmount + "\n" +
-                "**Thank you for your purchase!**";
+        transactionResult += "\n**Remaining Till Amount:** R" + remainingAmount + "\n" +
+                "\t\t**Thank you for your purchase!** \n";
 
         System.out.println(transactionResult);
         appendToOutput(transactionResult + "\n"); // Append to optional output file (if implemented)

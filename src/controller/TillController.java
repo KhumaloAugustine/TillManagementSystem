@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class TillController {
     private TillView view;
-    private int initialTillAmount;
+    private int initialTillAmount = 500;
     private Map<Integer, Integer> tillCash;
 
     public TillController(TillView view, int initialTillAmount) {
@@ -25,7 +25,6 @@ public class TillController {
     }
 
     private void initializeTillCash() {
-        // Add initial quantities of each denomination (adjust values as needed)
         tillCash.put(50, 5);  // 5 x R50
         tillCash.put(20, 5);  // 5 x R20
         tillCash.put(10, 6);  // 6 x R10
@@ -42,7 +41,7 @@ public class TillController {
 
             // Update till amount based on transaction
             int customerPayment = transaction.getAmountPaid();
-            int totalTillAmount = initialTillAmount + customerPayment;
+            int totalTillAmount = initialTillAmount + customerPayment - changeTotal;
             initialTillAmount = totalTillAmount; // Update initialTillAmount for subsequent transactions
 
             // Update denomination counts after providing change
