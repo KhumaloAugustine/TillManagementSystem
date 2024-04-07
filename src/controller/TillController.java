@@ -4,7 +4,6 @@ import model.Change;
 import model.Item;
 import model.Transaction;
 import view.TillView;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -15,19 +14,55 @@ import java.util.Map;
 
 public class TillController {
     private TillView view;
+    private int initialTillAmount;
+    private Map<Integer, Integer> tillCash;
 
-    public TillController(TillView view) {
+    public TillController(TillView view, int initialTillAmount) {
         this.view = view;
+        this.initialTillAmount = initialTillAmount;
+        this.tillCash = new HashMap<>();
+        initializeTillCash(); // Optional: pre-fill denominations (see point 4)
+    }
+
+    private void initializeTillCash() {
+        // Add initial quantities of each denomination (adjust values as needed)
+        tillCash.put(50, 5);  // 5 x R50
+        tillCash.put(20, 5);  // 5 x R20
+        tillCash.put(10, 6);  // 6 x R10
+        tillCash.put(5, 12);  // 12 x R5
+        tillCash.put(2, 10);  // 10 x R2
+        tillCash.put(1, 10);  // 10 x R1
     }
 
     public void processTransactions(List<Transaction> transactions) {
         for (Transaction transaction : transactions) {
-            // Process each transaction
-            int tillStart = 500; // Assuming till starts with a float of R500
             int transactionTotal = calculateTransactionTotal(transaction);
             int changeTotal = calculateChangeTotal(transaction);
             Change changeGiven = calculateChange(transaction, changeTotal);
-            view.displayTransactionResult(tillStart, transactionTotal, transaction.getAmountPaid(), changeTotal, changeGiven);
+
+            // Update till amount based on transaction
+            int customerPayment = transaction.getAmountPaid();
+            int totalTillAmount = initialTillAmount + customerPayment;
+            initialTillAmount = totalTillAmount; // Update initialTillAmount for subsequent transactions
+
+            // Update denomination counts after providing change
+            updateTillCash(changeGiven.getChangeBreakdown());
+
+            view.displayTransactionResult(initialTillAmount, transactionTotal, customerPayment, changeTotal, changeGiven, totalTillAmount);
+        }
+    }
+
+    private void updateTillCash(Map<Integer, Integer> changeBreakdown) {
+        for (Map.Entry<Integer, Integer> entry : changeBreakdown.entrySet()) {
+            int denomination = entry.getKey();
+            int changeQuantity = entry.getValue();
+
+            // Decrement used denominations, handle potential underflow (insufficient change)
+            tillCash.put(denomination, tillCash.getOrDefault(denomination, 0) - changeQuantity);
+            if (tillCash.get(denomination) < 0) {
+                // Handle insufficient change scenario (log error, inform user, etc.)
+                System.err.println("Insufficient change for denomination: " + denomination);
+            }
         }
     }
 
