@@ -12,7 +12,8 @@ Change Breakdown:
 Fresh - R30
 Free - R24
 
-**Thank you for your purchase!**
+**Thank you for your purchase!** 
+
 **Receipt**
 Date: 07/04/2024
 Till Start: R500
@@ -31,7 +32,8 @@ Double - R38
 Cheddar - R42
 Kiri - R33
 
-**Thank you for your purchase!**
+**Thank you for your purchase!** 
+
 **Receipt**
 Date: 07/04/2024
 Till Start: R500
@@ -46,7 +48,8 @@ Change Breakdown:
 **Items Bought:**
 Hake - R73
 
-**Thank you for your purchase!**
+**Thank you for your purchase!** 
+
 **Receipt**
 Date: 07/04/2024
 Till Start: R500
@@ -61,7 +64,8 @@ Beef - R72
 Chicken - R72
 Nuggets - R66
 
-**Thank you for your purchase!**
+**Thank you for your purchase!** 
+
 **Receipt**
 Date: 07/04/2024
 Till Start: R500
@@ -76,7 +80,8 @@ Change Breakdown:
 Beef - R56
 Oak - R230
 
-**Thank you for your purchase!**
+**Thank you for your purchase!** 
+
 **Receipt**
 Date: 07/04/2024
 Till Start: R500
@@ -88,7 +93,8 @@ Change Breakdown:
 **Items Bought:**
 Cheese - R66
 
-**Thank you for your purchase!**
+**Thank you for your purchase!** 
+
 **Receipt**
 Date: 07/04/2024
 Till Start: R500
@@ -104,7 +110,8 @@ Bananas - R20
 Cucumber - R15
 Avocados - R44
 
-**Thank you for your purchase!**
+**Thank you for your purchase!** 
+
 **Receipt**
 Date: 07/04/2024
 Till Start: R500
@@ -118,4 +125,5 @@ Potatoes - R30
 Apples - R33
 Carrots - R13
 
-**Thank you for your purchase!**
+**Thank you for your purchase!** 
+

@@ -40,7 +40,7 @@ public class TillView {
             transactionResult += item.getDescription() + " - " + "R" + item.getAmount() + "\n";
         }
 
-        transactionResult += "\n**Thank you for your purchase!**";
+        transactionResult += "\n**Thank you for your purchase!** \n";
 
         System.out.println(transactionResult);
         appendToOutput(transactionResult + "\n");
