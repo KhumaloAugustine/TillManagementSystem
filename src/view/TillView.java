@@ -1,7 +1,12 @@
 package view;
 
 import model.Change;
+import model.Item;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 
 public class TillView {
@@ -17,12 +22,26 @@ public class TillView {
     }
 
     public void displayTransactionResult(int tillStart, int transactionTotal, int amountPaid, int changeTotal, Change changeGiven) {
-        String transactionResult = "Till Start: " + tillStart + "\n" +
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        Date date = new Date();
+        String formattedDate = formatter.format(date);
+
+        String transactionResult = "**Receipt**\n" +
+                "Date: " + formattedDate + "\n" +
+                "Till Start: " + tillStart + "\n" +
                 "Transaction Total: " + transactionTotal + "\n" +
                 "Amount Paid: " + amountPaid + "\n" +
                 "Change Total: " + changeTotal + "\n" +
                 "Change Breakdown:\n" +
-                formatChangeBreakdown(changeGiven.getChangeBreakdown()) + "\n";
+                formatChangeBreakdown(changeGiven.getChangeBreakdown()) + "\n" +
+                "**Items Bought:**\n";
+
+        for (Item item : changeGiven.getTransaction().getItems()) {
+            transactionResult += item.getDescription() + " - " + item.getAmount() + "\n";
+        }
+
+        transactionResult += "\n**Thank you for your purchase!**";
+
         System.out.println(transactionResult);
         appendToOutput(transactionResult + "\n");
     }
@@ -35,20 +54,13 @@ public class TillView {
         return breakdown.toString();
     }
 
-    public void displayTillContents(Map<Integer, Integer> tillContents) {
-        StringBuilder tillContentsStr = new StringBuilder("Till Contents:\n");
-        for (Map.Entry<Integer, Integer> entry : tillContents.entrySet()) {
-            tillContentsStr.append(entry.getKey()).append(" : ").append(entry.getValue()).append("\n");
-        }
-        System.out.println(tillContentsStr);
-        appendToOutput(tillContentsStr + "\n");
-    }
-
     private void appendToOutput(String message) {
         output.append(message);
     }
 
-    public String getOutput() {
-        return output.toString();
+    public void saveToFile(String filename) throws IOException {
+        try (FileWriter writer = new FileWriter(filename)) {
+            writer.write(output.toString());
+        }
     }
 }

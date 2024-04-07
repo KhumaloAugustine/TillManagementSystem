@@ -59,7 +59,7 @@ public class TillController {
             }
         }
 
-        return new Change(changeTotal, changeBreakdown);
+        return new Change(changeTotal, changeBreakdown, transaction);
     }
 
     public static List<Transaction> readTransactionsFromFile(String filename) {
