@@ -28,16 +28,16 @@ public class TillView {
 
         String transactionResult = "**Receipt**\n" +
                 "Date: " + formattedDate + "\n" +
-                "Till Start: " + tillStart + "\n" +
-                "Transaction Total: " + transactionTotal + "\n" +
-                "Amount Paid: " + amountPaid + "\n" +
-                "Change Total: " + changeTotal + "\n" +
+                "Till Start: R" + tillStart + "\n" +
+                "Transaction Total: R" + transactionTotal + "\n" +
+                "Amount Paid: R" + amountPaid + "\n" +
+                "Change Total: R" + changeTotal + "\n" +
                 "Change Breakdown:\n" +
                 formatChangeBreakdown(changeGiven.getChangeBreakdown()) + "\n" +
                 "**Items Bought:**\n";
 
         for (Item item : changeGiven.getTransaction().getItems()) {
-            transactionResult += item.getDescription() + " - " + item.getAmount() + "\n";
+            transactionResult += item.getDescription() + " - " + "R" + item.getAmount() + "\n";
         }
 
         transactionResult += "\n**Thank you for your purchase!**";
