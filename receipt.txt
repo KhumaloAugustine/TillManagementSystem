@@ -1,0 +1,121 @@
+**Receipt**
+Date: 07/04/2024
+Till Start: 500
+Transaction Total: 54
+Amount Paid: 60
+Change Total: 6
+Change Breakdown:
+1 : 1
+5 : 1
+
+**Items Bought:**
+Fresh - 30
+Free - 24
+
+**Thank you for your purchase!**
+**Receipt**
+Date: 07/04/2024
+Till Start: 500
+Transaction Total: 113
+Amount Paid: 200
+Change Total: 87
+Change Breakdown:
+50 : 1
+2 : 1
+20 : 1
+5 : 1
+10 : 1
+
+**Items Bought:**
+Double - 38
+Cheddar - 42
+Kiri - 33
+
+**Thank you for your purchase!**
+**Receipt**
+Date: 07/04/2024
+Till Start: 500
+Transaction Total: 73
+Amount Paid: 100
+Change Total: 27
+Change Breakdown:
+2 : 1
+20 : 1
+5 : 1
+
+**Items Bought:**
+Hake - 73
+
+**Thank you for your purchase!**
+**Receipt**
+Date: 07/04/2024
+Till Start: 500
+Transaction Total: 210
+Amount Paid: 250
+Change Total: 40
+Change Breakdown:
+20 : 2
+
+**Items Bought:**
+Beef - 72
+Chicken - 72
+Nuggets - 66
+
+**Thank you for your purchase!**
+**Receipt**
+Date: 07/04/2024
+Till Start: 500
+Transaction Total: 286
+Amount Paid: 300
+Change Total: 14
+Change Breakdown:
+2 : 2
+10 : 1
+
+**Items Bought:**
+Beef - 56
+Oak - 230
+
+**Thank you for your purchase!**
+**Receipt**
+Date: 07/04/2024
+Till Start: 500
+Transaction Total: 66
+Amount Paid: 66
+Change Total: 0
+Change Breakdown:
+
+**Items Bought:**
+Cheese - 66
+
+**Thank you for your purchase!**
+**Receipt**
+Date: 07/04/2024
+Till Start: 500
+Transaction Total: 79
+Amount Paid: 90
+Change Total: 11
+Change Breakdown:
+1 : 1
+10 : 1
+
+**Items Bought:**
+Bananas - 20
+Cucumber - 15
+Avocados - 44
+
+**Thank you for your purchase!**
+**Receipt**
+Date: 07/04/2024
+Till Start: 500
+Transaction Total: 76
+Amount Paid: 76
+Change Total: 0
+Change Breakdown:
+
+**Items Bought:**
+Potatoes - 30
+Apples - 33
+Carrots - 13
+
+**Thank you for your purchase!**
