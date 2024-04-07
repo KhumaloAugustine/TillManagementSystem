@@ -13,15 +13,15 @@ import java.util.List;
 import java.util.Map;
 
 public class TillController {
-    private TillView view;
-    private int initialTillAmount = 500;
-    private Map<Integer, Integer> tillCash;
+    private final TillView view;
+    private int initialTillAmount;
+    private final Map<Integer, Integer> tillCash;
 
     public TillController(TillView view, int initialTillAmount) {
         this.view = view;
         this.initialTillAmount = initialTillAmount;
         this.tillCash = new HashMap<>();
-        initializeTillCash(); // Optional: pre-fill denominations (see point 4)
+        initializeTillCash();
     }
 
     private void initializeTillCash() {
@@ -39,12 +39,9 @@ public class TillController {
             int changeTotal = calculateChangeTotal(transaction);
             Change changeGiven = calculateChange(transaction, changeTotal);
 
-            // Update till amount based on transaction
             int customerPayment = transaction.getAmountPaid();
             int totalTillAmount = initialTillAmount + customerPayment - changeTotal;
-            initialTillAmount = totalTillAmount; // Update initialTillAmount for subsequent transactions
-
-            // Update denomination counts after providing change
+            initialTillAmount = totalTillAmount;
             updateTillCash(changeGiven.getChangeBreakdown());
 
             view.displayTransactionResult(initialTillAmount, transactionTotal, customerPayment, changeTotal, changeGiven, totalTillAmount);
@@ -56,10 +53,8 @@ public class TillController {
             int denomination = entry.getKey();
             int changeQuantity = entry.getValue();
 
-            // Decrement used denominations, handle potential underflow (insufficient change)
             tillCash.put(denomination, tillCash.getOrDefault(denomination, 0) - changeQuantity);
             if (tillCash.get(denomination) < 0) {
-                // Handle insufficient change scenario (log error, inform user, etc.)
                 System.err.println("Insufficient change for denomination: " + denomination);
             }
         }
@@ -82,7 +77,6 @@ public class TillController {
         Map<Integer, Integer> changeBreakdown = new HashMap<>();
         int remainingChange = changeTotal;
 
-        // Define your currency denominations here
         int[] denominations = {200, 100, 50, 20, 10, 5, 2, 1};
 
         for (int denomination : denominations) {
@@ -101,25 +95,25 @@ public class TillController {
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(","); // Split by comma (items and payment)
+                String[] parts = line.split(",");
                 List<Item> items = new ArrayList<>();
-                String[] itemDetails = parts[0].split(";"); // Split items by semicolon
+                String[] itemDetails = parts[0].split(";");
 
                 for (String itemDescription : itemDetails) {
-                    String[] descriptionAmount = itemDescription.trim().split("\\s+", 2); // Split description and amount (optional unit)
+                    String[] descriptionAmount = itemDescription.trim().split("\\s+", 2);
                     if (descriptionAmount.length >= 1) {
                         String description = descriptionAmount[0];
-                        int amount = parseAmount(descriptionAmount.length > 1 ? descriptionAmount[1] : ""); // Extract amount (handle missing)
+                        int amount = parseAmount(descriptionAmount.length > 1 ? descriptionAmount[1] : "");
                         items.add(new Item(description, amount));
                     } else {
                         System.err.println("Error: Invalid item format: " + itemDescription);
                     }
                 }
 
-                String[] paymentDetails = parts[1].split("-"); // Split payment details
+                String[] paymentDetails = parts[1].split("-");
                 int amountPaid = 0;
                 for (String payment : paymentDetails) {
-                    amountPaid += parseAmount(payment.trim()); // Parse each paid amount (assuming no unit)
+                    amountPaid += parseAmount(payment.trim());
                 }
                 transactions.add(new Transaction(items, amountPaid));
             }
@@ -131,9 +125,9 @@ public class TillController {
 
     private static int parseAmount(String amountString) {
         if (amountString.isEmpty()) {
-            return 0; // Handle missing amount (optional)
+            return 0;
         } else {
-            return Integer.parseInt(amountString.replaceAll("[^0-9]", "")); // Extract numeric part only (remove non-numeric characters)
+            return Integer.parseInt(amountString.replaceAll("[^0-9]", ""));
         }
     }
 }
